@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "media-clock-core"
+version = "0.1.0"
+description = "Packet timing, identity, delivery-order and decodability kernel between capture readers and muxers (no player, no CLI transcoder)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "media-clock-core contributors" }]
+dependencies = []
+
+[project.optional-dependencies]
+# 仅真实媒体往返测试和适配层需要；内核本体零依赖。
+av = ["av>=12"]
+test = ["pytest>=8", "av>=12"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
